@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Management System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f8ff;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px;
+            width: 90%;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 70%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🏥 Hospital Management System</h1>
+
+<div class="container">
+    <h3>Add Patient</h3>
+    <input type="text" id="id" placeholder="Patient ID">
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="age" placeholder="Age">
+    <input type="text" id="disease" placeholder="Disease">
+    <button onclick="addPatient()">Add Patient</button>
+</div>
+
+<h3>Patient Records</h3>
+
+<table id="patientTable">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Disease</th>
+    </tr>
+</table>
+
+<script>
+    let patients = [];
+
+    function addPatient() {
+        let id = document.getElementById("id").value;
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let disease = document.getElementById("disease").value;
+
+        if(id === "" || name === "" || age === "" || disease === "") {
+            alert("Please fill all fields");
+            return;
+        }
+
+        let patient = { id, name, age, disease };
+        patients.push(patient);
+
+        displayPatients();
+        clearFields();
+    }
+
+    function displayPatients() {
+        let table = document.getElementById("patientTable");
+
+        // Clear old rows
+        table.innerHTML = `
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Disease</th>
+            </tr>
+        `;
+
+        patients.forEach(p => {
+            let row = table.insertRow();
+            row.insertCell(0).innerText = p.id;
+            row.insertCell(1).innerText = p.name;
+            row.insertCell(2).innerText = p.age;
+            row.insertCell(3).innerText = p.disease;
+        });
+    }
+
+    function clearFields() {
+        document.getElementById("id").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("disease").value = "";
+    }
+</script>
+
+</body>
+</html>
