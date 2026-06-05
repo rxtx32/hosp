@@ -1,4 +1,4 @@
- 0Here, it is the basic Application for the Capstone Project to publish a Website in the Github for the Hospital Management System.
+ Here, it is the basic Application for the Capstone Project to publish a Website in the Github for the Hospital Management System.
 
 **Algorithm: Hospital Management System**
 1) Start
